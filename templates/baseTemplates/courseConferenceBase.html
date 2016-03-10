@@ -1,0 +1,53 @@
+{% extends "baseTemplates/base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {% with 'title' as expectedVarName %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ event_name }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <img src="/static/Images/holding-image.jpg"/>
+
+            <h3><a>Register online now</a></h3>
+            <h3><a href="{{ MEDIA_URL }}{{ brochure.url }}">Course Brochure</a></h3>
+
+            {% block info_section %}
+            {% endblock %}
+
+        </div>
+
+        <div class="col-md-4">
+            <h3>Next course:</h3>
+            <p><strong>Start Date: </strong>{{ start_date }}</p>
+            <p><strong>End Date: </strong>{{ end_date }}</p>
+            <p><strong>Venue:</strong>
+                {{ venue.venue_name }}<br/>
+                {{ venue.address1 }}<br/>
+                {% if venue.address2 != "" %}
+                {{ venue.address2 }}<br/>
+                {% endif %}
+                {{ venue.city }}<br/>
+                {{ venue.postcode }}<br/>
+                {{ venue.country }}
+            </p>
+            <P>
+                <iframe src="{{ venue.gmaps_iFrame_src }}" frameborder="0" style="border:0"></iframe>
+            </P>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "baseTemplates/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>ASRANet Courses</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+
+            <img src="{% static "Images/holding-image.jpg" %}"/>
+            <p>ASRANet offers a range of courses presented by experts from all fields of marine and structural
+                engineering. These courses are excellent for companies, professionals or students to further their own
+                understanding as well as develop and expand their engineering ability.</p>
+            <h3>Upcoming courses</h3>
+
+            {% for event in event_list %}
+
+                {% if event.start_date >= now %}
+
+                <section id="date">
+                    <p id="month">{{ event.start_date|date:"M" }}</p>
+                    <p id="day">{{ event.start_date|date:"d" }}</p>
+                </section>
+                <section id="info">
+                    <p id="title"><a href="{{ event.slug }}">{{ event.event_name }}</a></p>
+                    <p>3 day course - {{ event.venue.city }}, {{ event.venue.country }}</p>
+                </section>
+
+                {% endif %}
+
+            {% empty %}
+                <h4>There are no planned events. Please check again later.</h4>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

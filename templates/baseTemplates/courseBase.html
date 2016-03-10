@@ -1,0 +1,22 @@
+{% extends "baseTemplates/courseConferenceBase.html" %}
+
+{% block brochure %}
+{% with 'brochure' as expectedVarName %}
+{% endwith %}
+{% endblock %}
+
+{% block info_section %}
+
+    <p class="testimonials">{{ testimonials|linebreaks }}</p>
+
+    <h3>About the course</h3>
+
+    <p class="main-description">{{ main_description|linebreaks }}</p>
+
+    <h3>Who Should Attend?</h3>
+    <p>{{ who_attend }}</p>
+
+    <h3>Registration Cost</h3>
+    <p><strong>Professionals: </strong> £{{ registration_cost }} (pounds sterling) + VAT (only for UK)</p>
+
+{% endblock %}
