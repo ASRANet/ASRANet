@@ -34,5 +34,12 @@ def conference(request, conference_name_slug):
 
 
 def conference_list(request):
+    description = "ASRANet develop and offer a wide range of conferences. These conferences establish forums in " \
+                  "which experts and non-experts can assemble to pass on their expertise as well as learn and share" \
+                  " in each others knowledge. They are an excellent opportunity to keep up to date with the latest" \
+                  " developments in the marine and structural engineering industries. ASRANet have run numerous " \
+                  "conferences, the proceeding of these are available upon request. If you require any information " \
+                  "about obtaining the proceedings, please do not hesitate to ask."
     return render(request, 'baseTemplates/listCoursesConferencesBase.html',
-                  {'event_list': Conference.objects.all().order_by('start_date')})
+                  {'event_list': Conference.objects.all().order_by('start_date'), 'event_type': 'conference',
+                   'description': description})

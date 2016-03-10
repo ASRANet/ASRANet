@@ -5,17 +5,15 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>ASRANet Courses</h2>
+            <h2>ASRANet {{ event_type|title }}s</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
 
             <img src="{% static "Images/holding-image.jpg" %}"/>
-            <p>ASRANet offers a range of courses presented by experts from all fields of marine and structural
-                engineering. These courses are excellent for companies, professionals or students to further their own
-                understanding as well as develop and expand their engineering ability.</p>
-            <h3>Upcoming courses</h3>
+            <p>{{ description }}</p>
+            <h3>Upcoming {{ event_type|title }}s</h3>
 
             {% for event in event_list %}
 
@@ -27,7 +25,7 @@
                     </section>
                     <section id="info">
                         <p id="title"><a href="{{ event.slug }}">{{ event.event_name }}</a></p>
-                        <p>3 day course - {{ event.venue.city }}, {{ event.venue.country }}</p>
+                        <p>3 day {{ event_type }} - {{ event.venue.city }}, {{ event.venue.country }}</p>
                     </section>
 
                 {% endif %}
@@ -39,15 +37,15 @@
         </div>
 
         <div class="col-md-4">
-            <h2>Full course list</h2>
+            <h2>Full {{ event_type }} list</h2>
             <ul>
                 {% for event in event_list %}
                 <li><a href="{{ event.slug }}">{{ event.event_name }}</a></li>
                 {% endfor %}
             </ul>
-            <h2>In-house courses</h2>
-            <p>ASRANet offers a range of in-house courses to suit specification.</p>
-            <p id="title"><a href="">Previous ASRANet Inhouse Courses</a></p>
+            <h2>In-house {{ event_type|title }}s</h2>
+            <p>ASRANet offers a range of in-house {{ event_type }}s to suit specification.</p>
+            <p id="title"><a href="">Previous ASRANet Inhouse {{ event_type|title }}s</a></p>
         </div>
 
     </div>

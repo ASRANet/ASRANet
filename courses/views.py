@@ -26,6 +26,11 @@ def course(request, course_name_slug):
 
 
 def course_list(request):
-    print Course.objects.all().order_by('start_date')
+
+    description = "ASRANet offers a range of courses presented by experts from all fields of marine and structural " \
+                  "engineering. These courses are excellent for companies, professionals or students to further their " \
+                  "own understanding as well as develop and expand their engineering ability."
+
     return render(request, 'baseTemplates/listCoursesConferencesBase.html',
-                  {'event_list': Course.objects.all().order_by('start_date')})
+                  {'event_list': Course.objects.all().order_by('start_date'), 'event_type': 'course',
+                   'description': description})
