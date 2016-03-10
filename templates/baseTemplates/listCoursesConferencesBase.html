@@ -21,14 +21,14 @@
 
                 {% if event.start_date >= now %}
 
-                <section id="date">
-                    <p id="month">{{ event.start_date|date:"M" }}</p>
-                    <p id="day">{{ event.start_date|date:"d" }}</p>
-                </section>
-                <section id="info">
-                    <p id="title"><a href="{{ event.slug }}">{{ event.event_name }}</a></p>
-                    <p>3 day course - {{ event.venue.city }}, {{ event.venue.country }}</p>
-                </section>
+                    <section id="date">
+                        <p id="month">{{ event.start_date|date:"M" }}</p>
+                        <p id="day">{{ event.start_date|date:"d" }}</p>
+                    </section>
+                    <section id="info">
+                        <p id="title"><a href="{{ event.slug }}">{{ event.event_name }}</a></p>
+                        <p>3 day course - {{ event.venue.city }}, {{ event.venue.country }}</p>
+                    </section>
 
                 {% endif %}
 
@@ -37,6 +37,19 @@
             {% endfor %}
 
         </div>
+
+        <div class="col-md-4">
+            <h2>Full course list</h2>
+            <ul>
+                {% for event in event_list %}
+                <li><a href="{{ event.slug }}">{{ event.event_name }}</a></li>
+                {% endfor %}
+            </ul>
+            <h2>In-house courses</h2>
+            <p>ASRANet offers a range of in-house courses to suit specification.</p>
+            <p id="title"><a href="">Previous ASRANet Inhouse Courses</a></p>
+        </div>
+
     </div>
 
 
